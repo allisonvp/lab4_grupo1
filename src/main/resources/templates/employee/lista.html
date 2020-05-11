@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <title>Lista de Empleados</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Empleados</h1>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{}">Nuevo Empleado</a>  <!-- COMPLETAR -->
+        <!-- COMPLETAR -->
+        </form>
+        <!-- COMPLETAR -->
+             <table class="table">  <!-- COMPLETAR -->
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                    <th>Departamento</th>
+                    <th>Ciudad</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee, info : ${listaEmployee}">
+                    <td th:text="${info.index + 1}"></td>
+                    <td th:text="${employee.firstname}"></td>
+                    <td th:text="${employee.lastname}"></td>
+                    <td th:text="${employee.jobid.jobtitle}"></td>
+                    <td th:text="${employee.departmentid.departmentname}"></td>
+                    <td th:text="${employee.departmentid.locationid.city}"></td>
+                    <td><a class="btn btn-primary" th:href="@{'/employee/edit' + '?id=' + ${employee.employeeid}}">Editar</a>
+                    </td>
+                    <td><a class="btn btn-danger" th:href="@{'/employee/delete' + '?id=' + ${employee.employeeid}}">Borrar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
