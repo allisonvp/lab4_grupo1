@@ -2,6 +2,7 @@ package com.example.laboratorio4.controller;
 
 
 import com.example.laboratorio4.dtos.empleadoPorDepa;
+import com.example.laboratorio4.dtos.empleadoSalario;
 import com.example.laboratorio4.dtos.salarioPromDepa;
 import com.example.laboratorio4.repository.DepartmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +25,28 @@ public class SearchController {
     }
 
     @GetMapping(value = {"/Salario"})
-    public String listaEmpleadosMayorSalario() {
-
-        //COMPLETAR
-        return "Search/lista2";
+    public String listaEmpleadosMayorSalario(Model m) {
+        List<empleadoSalario> empleadoSalarios = departmentsRepository.buscarMayorSalario();
+        m.addAttribute("lista", empleadoSalarios);
+                return "Search/lista2";
     }
 
     @PostMapping("/busqueda")
-    public String buscar() {
+    public String buscar(@RequestParam("searchField") String sf,
+                         Model m) {
+        if (sf == null) {
 
-        //COMPLETAR
-        return "";
+            return "Search/lista2";
+        }
+        try {
+            int d = Integer.parseInt(sf);
+            List<empleadoSalario> empleadoSalarios = departmentsRepository.buscarPorSalario(d);
+            m.addAttribute("lista", empleadoSalarios);
+            return "Search/lista2";
+        } catch (NumberFormatException nfe) {
+            return "Search/lista2";
+        }
+
     }
 
     @GetMapping(value = "/Filtro2")

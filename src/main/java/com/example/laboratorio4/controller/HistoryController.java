@@ -28,6 +28,8 @@ public class HistoryController {
 
     @PostMapping("save")
     public String guardarRegistro(){
+
+
         return "redirect:/history/lista";
     }
 

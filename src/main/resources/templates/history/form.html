@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head >
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <title>Nuevo Registro</title>
     </head>
-    <body>
-        
+    <body class="container">
+        <div th:replace="fragments/fragmento.html :: barraSuperior(actual='employee')"></div>
+
+        <h2>Nuevo Registro</h2>
+        <hr />
+        <form method="post" th:action="@{'/history/save'}">                <!-- COMPLETAR -->
+
+                <div class="form-group col-6">
+
+                    <label for="nombre">Nombre</label>
+                    <input name="nombre" type="text" class="form-control" id="nombre">
+                </div>
+                <div class="form-group col-6">
+
+                    <label for="apellido">Apellido</label>
+                    <input name="apellido" type="text" class="form-control" id="apellido">
+                </div>
+
+
+
+                <div class="form-group col-6">
+                    <!-- COMPLETAR -->
+                    <label for="cargo">Cargo</label>
+                    <input name="cargo" type="text" class="form-control" id="cargo">
+                </div>
+                <div class="form-group col-6">
+                    <!-- COMPLETAR -->
+                    <label for="inicio">Fecha Inicio</label>
+                    <input name="inicio" type="text" class="form-control" id="inicio">
+                </div>
+                <div class="form-group col-6">
+                    <!-- COMPLETAR -->
+                    <label for="fin">Fecha Fin</label>
+                    <input name="fin" type="text" class="form-control" id="fin">
+                </div>
+
+                <div class="form-group col-6">
+                    <!-- COMPLETAR -->
+                    <label for="anhos">Anhos trabajando</label>
+                    <input name="anhos" type="text" class="form-control" id="anhos">
+                </div>
+
+                <div class="form-group col-6">
+                    <!-- COMPLETAR -->
+                    <label for="meses">Meses trabajando</label>
+                    <input name="meses" type="text" class="form-control" id="meses">
+                </div>
+
+
+
+
+
+            <a th:href="@{'/history/lista'}" class="btn btn-danger">Cancelar</a>                 <!-- COMPLETAR -->
+            <button type="submit" class="btn btn-primary">Registrar</button>               <!-- COMPLETAR -->
+            <div class="row">
+                <div class="form-group"></div>
+            </div>
+        </form>
     </body>
 </html>
