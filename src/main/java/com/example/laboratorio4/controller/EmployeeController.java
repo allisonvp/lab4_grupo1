@@ -87,10 +87,29 @@ public class EmployeeController {
     }
 
     @GetMapping("/edit")
-    public String editarEmployee() {
+    public String editarEmployee(@ModelAttribute("employees") @Valid Employees employees,
+                                 @RequestParam("id") int id,
+                                 Model model) {
 
         //COMPLETAR
-        return  "employee/Frm";
+
+        Optional<Employees> opt = employeesRepository.findById(id);
+        if (opt.isPresent()) {
+            employees =opt.get();
+
+            List<Jobs> listaJob = jobsRepository.findAll();
+            List<Departments> listaDep = departmentsRepository.findAll();
+            List<Employees> listaMan = employeesRepository.findAll();
+            model.addAttribute("listaJob", listaJob);
+            model.addAttribute("listaDep", listaDep);
+            model.addAttribute("listaMan", listaMan);
+            model.addAttribute("employee", employees);
+
+            return "employee/Frm";
+
+        } else {
+            return "redirect:/employee/lista";
+        }
     }
 
     @GetMapping("/delete")
@@ -109,10 +128,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/search")
-    public String buscar (){
+    public String buscar (@RequestParam("searchField") String sf,
+                          Model model){
 
         //COMPLETAR
-        return "employee/Frm";
+        List<Employees> listaEmp= employeesRepository.findByFirstname(sf);
+        model.addAttribute("listaEmployee", listaEmp);
+
+        return "employee/lista";
     }
 
 }

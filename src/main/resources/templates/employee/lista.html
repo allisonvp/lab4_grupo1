@@ -11,8 +11,12 @@
 <body>
     <div class="container">
         <h1>Lista de Empleados</h1>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{}">Nuevo Empleado</a>  <!-- COMPLETAR -->
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/new}">Nuevo Empleado</a>  <!-- COMPLETAR -->
+
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
         <!-- COMPLETAR -->
+        <form method="post" th:action="@{/employee/search}">
+            <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar"/>
         </form>
         <!-- COMPLETAR -->
              <table class="table">  <!-- COMPLETAR -->
