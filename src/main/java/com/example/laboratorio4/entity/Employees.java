@@ -2,11 +2,12 @@ package com.example.laboratorio4.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -16,7 +17,7 @@ public class Employees {
     //COMPLETAR
     @Id
     @Column(name="employee_id")
-    private String employeeid;
+    private int employeeid;
     @Column(name="first_name")
     @NotBlank(message = "No puede estar vacío")
     @Size(max = 20, message = "El nombre no puede tener más de 20 caracteres")
@@ -26,18 +27,26 @@ public class Employees {
     @Size(max = 25, message = "El apellido no puede tener más de 25 caracteres")
     private String lastname;
     @Column(nullable = false)
+    @NotBlank(message = "No puede estar vacío")
     @Size(max = 25, message = "El correo no puede tener más de 25 caracteres")
     private String email;
+    @NotBlank(message = "No puede estar vacío")
+
+    @NotBlank(message = "No puede estar vacío ni blanco")
+    @Size(min = 8, message = "Debe tener un mínimo de 8 caracteres")
+    @Size(max = 36, message = "Debe tener un máximo de 36 caracteres")
+    private String password;
     @Size(max = 25, message = "El teléfono no puede tener más de 25 caracteres")
     private String phone_number;
 
-    @Column(nullable = false)
-    private LocalDate hire_date;
+    @Column(nullable = false, name = "hire_date")
+    private Date hiredate;
 
     @ManyToOne
     @JoinColumn(name = "job_id")
     private Jobs job;
     @Digits(integer = 8, fraction = 2)
+    @Positive(message = "Tiene que ser mayor que 0")
     private BigDecimal salary;
     @Digits(integer = 2, fraction = 2)
     private BigDecimal commission_pct;
@@ -51,11 +60,19 @@ public class Employees {
     private Departments department;
 
 
-    public String getEmployeeid() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getEmployeeid() {
         return employeeid;
     }
 
-    public void setEmployeeid(String employeeid) {
+    public void setEmployeeid(int employeeid) {
         this.employeeid = employeeid;
     }
 
@@ -91,12 +108,12 @@ public class Employees {
         this.phone_number = phone_number;
     }
 
-    public LocalDate getHire_date() {
-        return hire_date;
+    public Date getHiredate() {
+        return hiredate;
     }
 
-    public void setHire_date(LocalDate hire_date) {
-        this.hire_date = hire_date;
+    public void setHiredate(Date hire_date) {
+        this.hiredate = hire_date;
     }
 
     public Jobs getJob() {
