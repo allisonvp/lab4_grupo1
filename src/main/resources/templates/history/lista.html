@@ -14,16 +14,28 @@
     <a class="btn btn-primary mt-4 mb-4" th:href="@{}">Nuevo Registro</a>
 
         <table class="table">
-        <thead>
-        <tr>
-            <!-- COMPLETAR-->
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="historia : ${listaHistorial}">
-        <!-- COMPLETAR-->
-        </tr>
-        </tbody>
+            <thead>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Cargo</td>
+                    <td>Fecha inicio</td>
+                    <td>Fecha fin</td>
+                    <td>Años trabajados</td>
+                    <td>Meses trabajados</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="historia, i:${listaHistorial}">
+                    <td th:text="${historia.nombre}"></td>
+                    <td th:text="${historia.apellido}"></td>
+                    <td th:text="${historia.trabajo}"></td>
+                    <td th:text="${historia.inicio}"></td>
+                    <td th:text="${historia.fin}"></td>
+                    <td th:text="${historia.anhos}"></td>
+                    <td th:text="${historia.meses}"></td>
+                </tr>
+            </tbody>
     </table>
 </div>
 </body>
