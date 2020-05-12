@@ -7,6 +7,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -39,7 +40,7 @@ public class Employees {
     private String phone_number;
 
     @Column(nullable = false, name = "hire_date")
-    private LocalDate hiredate;
+    private Date hiredate;
 
     @ManyToOne
     @JoinColumn(name = "job_id")
@@ -107,11 +108,11 @@ public class Employees {
         this.phone_number = phone_number;
     }
 
-    public LocalDate getHiredate() {
+    public Date getHiredate() {
         return hiredate;
     }
 
-    public void setHiredate(LocalDate hire_date) {
+    public void setHiredate(Date hire_date) {
         this.hiredate = hire_date;
     }
 
