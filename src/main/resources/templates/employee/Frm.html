@@ -13,6 +13,7 @@
         <h2 th:text="${empleado.employeeid==0?'Nuevo Empleado':'Editar Empleado'}">Nuevo Empleado</h2>
         <hr />
         <form method="post" th:object="${empleado}" th:action="@{'/employee/save'}">
+            <input hidden type="text" class="form-control" th:field="*{employeeid}">
             <div class="row">
                 <div class="form-group col-6">
                     <label for="firstname">Nombre</label>
