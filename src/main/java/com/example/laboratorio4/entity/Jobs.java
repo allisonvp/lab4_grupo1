@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "jobs")
@@ -12,10 +14,13 @@ public class Jobs {
     @Id
     @Column(name = "job_id")
     private String jobid;
+    @Size(max = 35, message = "El nombre no puede tener más de 35 caracteres")
     @Column(name = "job_title",nullable = false)
     private String jobtitle;
+    @Max(value = 6, message = "El salario máximo no puede tener más de 6 digitos")
     @Column(name = "min_salary")
     private int minsalary;
+    @Max(value = 6, message = "El salario mínimo no puede tener más de 6 digitos")
     @Column(name = "max_salary")
     private int maxsalary;
 
