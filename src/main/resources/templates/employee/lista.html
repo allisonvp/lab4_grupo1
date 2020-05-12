@@ -33,9 +33,9 @@
                     <td th:text="${info.index + 1}"></td>
                     <td th:text="${employee.firstname}"></td>
                     <td th:text="${employee.lastname}"></td>
-                    <td th:text="${employee.jobid.jobtitle}"></td>
-                    <td th:text="${employee.departmentid.departmentname}"></td>
-                    <td th:text="${employee.departmentid.locationid.city}"></td>
+                    <td th:text="${employee.job.jobtitle}"></td>
+                    <td th:text="${employee.department.departmentname}"></td>
+                    <td th:text="${employee.department.locationid.city}"></td>
                     <td><a class="btn btn-primary" th:href="@{'/employee/edit' + '?id=' + ${employee.employeeid}}">Editar</a>
                     </td>
                     <td><a class="btn btn-danger" th:href="@{'/employee/delete' + '?id=' + ${employee.employeeid}}">Borrar</a>
