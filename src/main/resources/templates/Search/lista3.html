@@ -11,12 +11,26 @@
     <body>
         <div class="container">
         <h1>Empleados por Departamento</h1>
-            <table class="table">
+            <table class="table table-sm">
                 <thead>
-                <!-- COMPLETAR -->
+                
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cargo</th>
+                    <th>Sueldo</th>
+                    <th></th>
+               
                 </thead>
                 <tbody>
-                <!-- COMPLETAR -->
+                    <tr th:each="item : ${lista}">
+                        <td th:text="${item.empid}"></td>
+                        <td th:text="${item.empname}"></td>
+                        <td th:text="${item.emplast}"></td>
+                        <td th:text="${item.cargo}"></td>
+                        <td th:text="${item.sueldo}"></td>
+                        <td><a class="btn btn-primary" th:href="@{'/Search/listar?id=' + ${item.empid}}">Editar</a></td>
+                    </tr>
                 </tr>
                 </tbody>
             </table>

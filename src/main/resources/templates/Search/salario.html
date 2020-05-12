@@ -11,15 +11,24 @@
 <body>
 <div class="container">
     <h1>Reporte de salario máximo por departamento</h1>
-    <a class="btn btn-primary" th:href="@{}">Regresar</a>
-    <table class="table">
+    <a class="btn btn-primary" th:href="@{/Search}">Regresar</a>
+    <table class="table table-sm">
         <thead>
         <tr>
-            <!-- COMPLETAR -->
+            <th>ID</th>
+            <th>Departamento</th>
+            <th>Promedio</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-            <!-- COMPLETAR -->
+            <tr th:each="item : ${lista}">
+                <td th:text="${item.depaid}"></td>
+                <td th:text="${item.depaname}"></td>
+                <td th:text="${item.promedio}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/Search/listar?id=' + ${item.depaid}}">Info</a></td>
+            </tr>
+            
         </tbody>
     </table>
 </div>
