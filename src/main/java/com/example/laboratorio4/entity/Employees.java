@@ -3,6 +3,7 @@ package com.example.laboratorio4.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ public class Employees {
     //COMPLETAR
     @Id
     @Column(name="employee_id")
-    private String employeeid;
+    private int employeeid;
     @Column(name="first_name")
     @NotBlank(message = "No puede estar vacío")
     @Size(max = 20, message = "El nombre no puede tener más de 20 caracteres")
@@ -44,6 +45,7 @@ public class Employees {
     @JoinColumn(name = "job_id")
     private Jobs job;
     @Digits(integer = 8, fraction = 2)
+    @Positive(message = "Tiene que ser mayor que 0")
     private BigDecimal salary;
     @Digits(integer = 2, fraction = 2)
     private BigDecimal commission_pct;
@@ -57,11 +59,19 @@ public class Employees {
     private Departments department;
 
 
-    public String getEmployeeid() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getEmployeeid() {
         return employeeid;
     }
 
-    public void setEmployeeid(String employeeid) {
+    public void setEmployeeid(int employeeid) {
         this.employeeid = employeeid;
     }
 
