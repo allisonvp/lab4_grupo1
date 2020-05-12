@@ -19,20 +19,19 @@ public class Employees {
     @Column(name="employee_id")
     private int employeeid;
     @Column(name="first_name")
-    @NotBlank(message = "No puede estar vacío")
+    @NotBlank
     @Size(max = 20, message = "El nombre no puede tener más de 20 caracteres")
     private String firstname;
     @Column(nullable = false, name="last_name")
-    @NotBlank(message = "No puede estar vacío")
+    @NotBlank
     @Size(max = 25, message = "El apellido no puede tener más de 25 caracteres")
     private String lastname;
     @Column(nullable = false)
-    @NotBlank(message = "No puede estar vacío")
+    @NotBlank
     @Size(max = 25, message = "El correo no puede tener más de 25 caracteres")
     private String email;
-    @NotBlank(message = "No puede estar vacío")
 
-    @NotBlank(message = "No puede estar vacío ni blanco")
+    @NotBlank
     @Size(min = 8, message = "Debe tener un mínimo de 8 caracteres")
     @Size(max = 36, message = "Debe tener un máximo de 36 caracteres")
     private String password;
