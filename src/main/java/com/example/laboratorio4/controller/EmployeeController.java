@@ -90,6 +90,7 @@ public class EmployeeController {
     public String editarEmployee() {
 
         //COMPLETAR
+        return  "employee/Frm";
     }
 
     @GetMapping("/delete")
@@ -111,6 +112,7 @@ public class EmployeeController {
     public String buscar (){
 
         //COMPLETAR
+        return "employee/Frm";
     }
 
 }
